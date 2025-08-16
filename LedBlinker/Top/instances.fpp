@@ -67,6 +67,9 @@ module LedBlinker {
   instance systemResources: Svc.SystemResources base id 0x10012000
 
   instance timer: Svc.LinuxTimer base id 0x10013000
+
   instance comDriver: Drv.TcpServer base id 0x10014000
+
+  instance gpioDriver: Drv.LinuxGpioDriver base id 0x10015000
 
 }

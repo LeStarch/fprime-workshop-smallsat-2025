@@ -26,6 +26,18 @@ class Led final : public LedComponentBase {
 
   private:
     // ----------------------------------------------------------------------
+    // Handler implementations for typed input ports
+    // ----------------------------------------------------------------------
+
+    //! Handler implementation for run
+    //!
+    //! Port receiving calls from the rate group
+    void run_handler(FwIndexType portNum,  //!< The port number
+                     U32 context           //!< The call order
+                     ) override;
+
+  private:
+    // ----------------------------------------------------------------------
     // Handler implementations for commands
     // ----------------------------------------------------------------------
 
@@ -36,6 +48,11 @@ class Led final : public LedComponentBase {
                                     U32 cmdSeq,           //!< The command sequence number
                                     Fw::On onOff          //!< Indicates whether the blinking should be on or off
                                     ) override;
+
+    //! Emit parameter updated EVR
+    //!
+    void parameterUpdated(FwPrmIdType id  //!< The parameter ID
+                          ) override;
 
     Fw::On m_state = Fw::On::OFF; //! Keeps track if LED is on or off
     U64 m_transitions = 0; //! The number of on/off transitions that have occurred from FSW boot up

@@ -34,6 +34,7 @@ module LedBlinker {
     instance cmdSeq
 
     instance led
+    instance gpioDriver
 
   # ----------------------------------------------------------------------
   # Pattern graph specifiers
@@ -129,7 +130,7 @@ module LedBlinker {
     }
 
     connections LedBlinker {
-
+       led.gpioSet -> gpioDriver.gpioWrite
     }
 
   }
